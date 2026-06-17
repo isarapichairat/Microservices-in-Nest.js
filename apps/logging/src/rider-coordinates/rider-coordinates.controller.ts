@@ -4,19 +4,16 @@ import { RiderCoordinatesService } from './rider-coordinates.service';
 
 @Controller('rider-coordinates')
 export class RiderCoordinatesController {
-        constructor(private riderCoordinateService: RiderCoordinatesService){}
-        @Get()
-        getRiderCoordinate() {
-                return 'Hello i am from rider coordinate'
-        }
-
-        @Post()
-        saveRiderCoordinates(
-                @Body()
-                createCoordinatesDTO: CreateCoordinatesDTO
-        ) {
-                return this.riderCoordinateService.saveRiderCoordinates(createCoordinatesDTO)
-
-
-        }
+    constructor(private coordinatsService: RiderCoordinatesService){}
+    @Get()
+    async getRiderCoordinates(){
+        return this.coordinatsService.getRiderCoordinate();
+    }
+    @Post()
+    async saveRiderCoordiantes(
+        @Body()
+        createCoordinateDTO: CreateCoordinatesDTO
+    ){
+        return this.coordinatsService.saveRiderCoordinates(createCoordinateDTO)
+    }
 }
